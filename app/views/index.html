@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="mainNavTagsArea">
+
+                <ul class="list-group navTags">
+                    <li ng-click="filterCategory(category)" class="list-group-item" ng-repeat="category in categories | orderBy: 'id' ">
+                        <span class="glyphicon glyphicon-filter">
+                        </span>
+                        <label>{{category.name}}</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-8 containerOverall">
+            <!--<div class="indexHeader"><h4 class="headTitle">最新更新</h4></div>-->
+            <!--<div class="navTags">-->
+                <!--<span class="glyphicon glyphicon-tags"></span>-->
+                <!--<label>视频</label><label>专业</label><label>文学</label><label>杂文</label>-->
+            <!--</div>-->
+
+            <div class="row indexItem" ng-repeat="item in filteredItems = ( items | filter: {category: searchCategory && searchCategory.id} | filter: searchKey)">
+                <div class="media">
+                    <span class="pull-left userInfoContainer">
+                        <a href="#userProfile/{{getUserInfo(item, this).id}}"><img class="img-responsive img-thumbnail" ng-src="images/{{this.user.image}}"></a>
+                        <span class="userInfoName">{{this.user.name}}</span>
+                    </span>
+                    <div class="media-body media-border">
+                        <h3 style="margin-top: 0;"><a href="#pageView/{{item.folderIds[0]}}/{{item.id}}">{{item.title}}</a></h3>
+                        <p>
+                            <span style="margin-right: 5px;" class="label label-primary" ng-repeat="lb in labels = getLabels(item.label)">{{lb}}</span>
+                        </p>
+                        <p>{{item.describe}}</p>
+                        <div class="likeArea">
+                            <span class="glyphicon glyphicon-thumbs-up"></span><span>{{item.likeAmount}}</span>
+
+                            <!--<span class="pull-right"><img src="http://static.zhihu.com/static/favicon.ico"></span>-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" ng-show="searchKey && filteredItems && filteredItems.length == 0">
+                <div class="center-block">
+                    没有搜索结果，
+                    <button type="button" ng-click="loadKeyItems(false)" class="btn btn-default" ng-show="searchCategory && searchCategory.id">{{searchCategory.name}} 中继续查找</button>
+                    <button type="button" ng-click="loadKeyItems(true)" class="btn btn-default">全局查找</button>
+                </div>
+            </div>
+            <div class="row" ng-hide="isLoadMore() || (filteredItems && filteredItems.length == 0)">
+                <div class="loadMore" ng-click="loadMoreItems()">
+                    <p>加载更多</p>
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="searchArea">
+                <input type="text" ng-model="searchKey" placeholder="搜索" class="searchFieldWithoutBorder">
+                <span class="glyphicon glyphicon-search"></span>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,46 @@
+<div class="soeasy-favTool-container" id="soeasy-favTool-container">
+    <div class="soeasy-favTool-container-logo">
+        <span>soeasy</span>
+    </div>
+    <div class="soeasy-favTool-container-content soeasy-favTool-hide" id="soeasy-favTool-container-content-collect">
+        <div>
+            <label for="soeasy_title">标题</label>
+            <input type="text" id="soeasy_title">
+        </div>
+        <div>
+            <label for="soeasy_label">标签</label>
+            <input type="text" id="soeasy_label" placeholder="如:人生 生活美文">
+        </div>
+        <div>
+            <label for="soeasy_category">分类</label>
+            <div class="soeasy-favTool-container-folderTree-foldersPanel">
+                <span id="selectFolders" class="soeasy-favTool-container-folderTree-foldersPanel-capital">
+                    请选择分类
+                </span>
+                <div id="soeasy_category" class="soeasy-favTool-container-folderTree">
+                </div>
+            </div>
+        </div>
+        <div style="position: relative">
+            <div style="position: absolute;left: 450px;top: -45px;width: 200px;">
+                <button class="soeasy-btn" id="soeasy-collect">收藏</button>
+                <span class="soeasy-collect-result soeasy-favTool-hide" id="soeasy-collect-result">收藏成功</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="soeasy-favTool-container-content soeasy-favTool-login soeasy-favTool-hide" id="soeasy-favTool-container-content-login">
+        <div>
+            <label for="soeasy_name">用户名</label>
+            <input id="soeasy_name" type="text">
+        </div>
+        <div>
+            <label for="soeasy_password">密码</label>
+            <input id="soeasy_password" type="password">
+        </div>
+        <div>
+            <button class="soeasy-btn" id="soeasy_login">登录</button>
+            <span class="soeasy-favTool-login-tip soeasy-favTool-hide" id="soeasy-favTool-login-tip">用户名或密码错误</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <div class="row">
+
+    </div>
+    <div class="row">
+        <div style="position: absolute;left: 0">
+            <span ng-click="showPre()" class="glyphicon glyphicon-chevron-left prePage"></span>
+        </div>
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#userProfile/{{folder.userId}}">{{folder.name}}</a></li>
+                <li>{{page.title}}</li>
+                <li class="pull-right pageOpBar">
+                    <span ng-click="showSelectedPanel('content')" class="glyphicon glyphicon-file" ng-class="{'selectedColor': panelStatus.content}"></span>
+                    <span ng-click="showSelectedPanel('collect')" class="glyphicon glyphicon-star" ng-class="{'selectedColor': panelStatus.collect}"></span>
+                    <span ng-click="likeSite(page)" class="glyphicon glyphicon-thumbs-up"><span style="font-family: sans-serif;vertical-align: top">({{page.likeAmount}})</span></span>
+                </li>
+            </ol>
+            <div class="panel panel-default" style="position: relative;">
+                <div  ng-show="panelStatus.content" class="panel-body">
+                    <div class="alert alert-info openOrgTip openOrgTip">
+                        <a ng-href="{{page.link}}" target="_blank">打不开，查看原文</a>
+                    </div>
+                    <iframe iframe-loading load-url="page.link" class="pageIframePanel" ng-src="{{page.link}}"></iframe>
+                </div>
+                <div ng-show="panelStatus.collect" class="panel-body panelBase">
+
+                    <form role="form" name="collectPageForm" class="pageViewCollectBody form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <h3 class="panelPlainHead">
+                                    <span class="glyphicon glyphicon-bookmark"></span>
+                                    <span class="panelPlainHead-text">添加到我的收藏夹</span>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="collectionTitle" class="col-sm-2 control-label">标题</label>
+                            <div class="col-sm-6">
+                                <input type="text" required ng-model="collectModel.item.title"  class="form-control" id="collectionTitle" placeholder="Enter email">
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="collectionFolder" class="col-sm-2 control-label">收藏夹</label>
+                            <div class="col-sm-6">
+                                <div id="collectionFolder"  folders="userFolders" selected-folder="collectModel.folder" folder-tree></div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="inputWarning" ng-show="isCollectFolderEmpty">请选择收藏夹</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="collectionLabel" class="col-sm-2 control-label">标签</label>
+                            <div class="col-sm-6">
+                                <input type="text" ng-model="collectModel.item.label"  class="form-control" id="collectionLabel" placeholder="label">
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-6">
+                            <button type="submit" ng-click="submitCollection()" ng-disabled="!collectPageForm.$valid" class="btn btn-default">提 交</button>
+                        </div>
+
+                    </form>
+                </div>
+                <div ng-show="panelStatus.opResult" class="panel-body">
+                    <div class="alert alert-success" role="alert">操作成功</div>
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute; right: 0">
+            <span ng-click="showNext()" class="glyphicon glyphicon-chevron-right nextPage"></span>
+        </div>
+    </div>
+    <div class="row" style="display: none">
+        <div class="pageViewOperatorContainer">
+            <div class="container" style="height: 100px;">
+                <div class="row pageViewOperator">
+                    <div class="col-sm-4 pageLike">
+                        <span ng-click="showSelectedPanel('content')" class="glyphicon glyphicon-file"></span>
+                        <!--<h4>100</h4>-->
+                    </div>
+                    <div class="col-sm-4 pageCollect">
+                        <span ng-click="showSelectedPanel('collect')" class="glyphicon glyphicon-star"></span>
+                        <h4>200</h4>
+                    </div>
+                    <!--<div class="col-sm-4 pageUser">-->
+                        <!--<span class="glyphicon glyphicon-comment"></span>-->
+                        <!--<h4>150</h4>-->
+                    <!--</div>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--<div style="width: 100%;position: fixed;height: 100px;background-color: #808080">-->
+    <!--<span class="glyphicon glyphicon-thumbs-up">赞</span>-->
+<!--</div>-->

@@ -1,0 +1,716 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+//@import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
+
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+@import "mainVariables.scss";
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+//    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+  .gallery-3d-left,
+  .gallery-3d-right,
+  .gallery-2d-left,
+  .gallery-2d-right,
+  .gallery-3d-move-left,
+  .gallery-3d-move-right,
+  .gallery-3d-move-outLeft,
+  .gallery-3d-move-outRight{
+    display: none !important;
+    opacity: 0;
+  }
+  .dg-wrapper a.dg-transition{
+    -webkit-transition:none !important;
+  }
+}
+
+@mixin gallery3DTransform($translateX,$translateZ,$rotateY){
+  -webkit-transform : translateX($translateX) translateZ($translateZ) rotateY($rotateY);
+  -moz-transform : translateX($translateX) translateZ($translateZ) rotateY($rotateY);
+  -o-transform : translateX($translateX) translateZ($translateZ) rotateY($rotateY);
+  -ms-transform : translateX($translateX) translateZ($translateZ) rotateY($rotateY);
+  transform : translateX($translateX) translateZ($translateZ) rotateY($rotateY);
+}
+
+@mixin gallery2DTransform($translate,$scale){
+  -webkit-transform : translate($translate) scale($scale);
+  -moz-transform : translate($translate) scale($scale);
+  -o-transform : translate($translate) scale($scale);
+  -ms-transform : translate($translate) scale($scale);
+  transform : translate($translate) scale($scale);
+}
+
+.gallery-3d-left {
+    @include gallery3DTransform(-350px,-200px,45deg);
+}
+
+.gallery-3d-right {
+    @include gallery3DTransform(350px,-200px,-45deg);
+}
+
+.gallery-2d-left {
+  @include gallery2DTransform(-350px,0.8);
+}
+.gallery-2d-right {
+  @include gallery2DTransform(350px,0.8);
+}
+
+.gallery-3d-left,
+.gallery-3d-right,
+.gallery-2d-left,
+.gallery-2d-right{
+  opacity : .2;
+  visibility : visible
+}
+.gallery-current {
+    opacity : 1;
+    visibility : visible
+}
+
+.gallery-3d-move-outLeft {
+  @include gallery3DTransform(-450px, -300px, 45deg);
+}
+.gallery-3d-move-left {
+  @include gallery3DTransform(-350px,-200px, 45deg);
+}
+.gallery-3d-move-outLeft,
+.gallery-3d-move-outRight {
+  opacity : .2;
+  visibility : hidden
+}
+.gallery-3d-move-outRight {
+  @include gallery3DTransform(450px, -300px, -45deg);
+}
+.gallery-3d-move-right {
+  @include gallery3DTransform(350px, -200px, -45deg);
+}
+
+.gallery-3d-move-center {
+  @include gallery3DTransform(0, 0, 0);
+}
+
+.gallery-3d-move-left,
+.gallery-3d-move-right {
+  opacity : .2;
+  visibility : visible
+}
+.gallery-3d-move-center {
+  opacity : 1;
+  visibility : visible
+}
+.gallery-item-initial {
+  opacity : 0;
+  visibility : hidden;
+}
+
+@mixin border-bottom(){
+  border-bottom: 1px dotted $main-border-bottom-color;
+}
+
+.indexItem {
+}
+.media-border {
+  @include  border-bottom();
+  padding: 10px 0;
+  &.firstItem {
+    padding-top: 0;
+  }
+}
+.commonBorderBottom {
+  @include border-bottom();
+}
+.indexHeader {
+  @include border-bottom();
+  .headTitle {
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+  }
+}
+.pageViewOperatorContainer {
+  position: fixed;
+  left:0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  background-color: $page-view-operator-panel
+}
+.pageViewOperator {
+  line-height: 50px;
+  font-size: 30px;
+  color: white;
+  padding-top: 20px;
+  text-align: center;
+}
+.pageLike,
+.pageCollect,
+.pageUser {
+  h4 {
+    margin:0;
+  }
+  &:hover {
+    color:rgb(255, 246, 24);
+  }
+}
+.nextPage,
+.prePage {
+  line-height: $page-view-iframe-height;
+  vertical-align: middle;
+  font-size: 40px;
+  color: gray;
+  cursor: pointer;
+  &:hover {
+    color:lightblue;
+  }
+}
+.pageIframePanel {
+  height: $page-view-iframe-height;
+  width: 100%;
+}
+.searchItemsContainer {
+  background-color: #ffffff;
+  &:hover {
+    background-color: lightgray;
+  }
+}
+.userProfileItems, .addFolderCol{
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+}
+.userProfileItem {
+  border-bottom: 1px dotted lightgray;
+  padding: 10px 0;
+//  margin-bottom: 10px;
+  position: relative;
+}
+.userProfileItems-header {
+  border-bottom: 1px dotted lightgray;
+}
+.collectDatePoint {
+  position: absolute;
+  left: -22px;
+  top: -10px;
+}
+.collectDate {
+  position: absolute;
+  top: -10px;
+  left:-55px;
+}
+.folderItem {
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    color:#000000;
+    font-weight: 500;
+  }
+  .folderIcon {
+    color:lightblue;
+  }
+  .plusIcon {
+    font-size: 40px;
+    color: lightcoral;
+  }
+  .centerMediaBody {
+    line-height: 40px;
+  }
+  &.clearRightBorder {
+    margin: 15px -16px 0 0;
+    border-right: 1px solid white;
+    &.media:first-child{
+      margin-top: 0;
+    }
+  }
+  .media-body {
+    margin-right: 40px;
+    .media-heading {
+      margin-bottom: 0;
+    }
+    &:hover {
+      background-color: linen;
+    }
+  }
+
+}
+.folderRightIcon {
+  position: absolute;
+  right: 0;
+  top:0;
+  font-size: 30px;
+  color: lightblue;
+  background: white;
+}
+.searchField {
+  width:300px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.loadingArea {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  background-color: lightgray;
+  @include opacity(0.5);
+  .loading {
+    font-size: 40px;
+    color: #35D10F;
+    text-align: center;
+    line-height: 100px;
+  }
+}
+.addFolderForm {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 10px;
+  lable.control-label {
+    letter-spacing: 5px;
+  }
+}
+.col-right-border {
+  border-right: 1px solid lightgray;
+}
+.col-left-border {
+  border-left: 1px solid lightgray;
+}
+.folderHeader {
+  font-size: 34px;
+  border-bottom: 1px solid lightgray;
+  line-height: 35px;
+  vertical-align: middle;
+  .plusIcon {
+    color: lightcoral;
+    cursor: pointer;
+    width: 20%;
+    text-align: right;
+  }
+  .leftHomeBack {
+    color: lightblue;
+    cursor: pointer;
+    width: 20%;
+  }
+  .folderTitle {
+    display: inline-block;
+    margin: 0 auto;
+    width: 55%;
+    font-size: 18px;
+    text-align: center;
+    color:gray;
+    font-weight: bold;
+    overflow: hidden;
+  }
+}
+.folderMark,.folderNavTitle {
+  font-size: 18px;
+  line-height: 34px;
+  .glyphicon {
+    color:greenyellow;
+    vertical-align: bottom;
+  }
+  .separator:before{
+    content: " / ";
+    vertical-align: bottom;
+    line-height: 1;
+  }
+  .folderMark-folderName {
+    vertical-align: bottom;
+    color: lightblue;
+    line-height: 1;
+  }
+}
+.folderNavTitle {
+  display: block;
+  border-bottom: 1px dotted lightgray;
+  padding-bottom: 10px;
+}
+.pageOpBar {
+  width: 200px;
+  font-size: 20px;
+  color: lightblue;
+  text-align: right;
+  &:before{
+    content: "" !important;
+  }
+  >span {
+    padding-left: 10px;
+    cursor: pointer;
+    &:hover {
+      color:lightgreen;
+    }
+  }
+}
+.folderPanel {
+  margin-top: 10px;
+}
+@media (min-width: 990px) {
+  .fixedNav {
+    position: fixed;
+    width: 277px;
+  }
+  .userInfoFixed {
+    position: fixed;
+    width: 205px;
+    text-align: center;
+    img {
+      margin: 0 auto;
+      max-width: 75px;
+      max-height: 75px;
+    }
+  }
+}
+.folderEmpty {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 25px;
+  color:lightcoral;
+}
+.navTags {
+  font-size: 18px;
+  color:gray;
+  li {
+    border: none;
+    line-height: 18px;
+    vertical-align: middle;
+    span.glyphicon {
+      vertical-align: top;
+    }
+  }
+  label {
+    padding: 0 10px;
+    cursor: pointer;
+    margin-bottom: 0px;
+    vertical-align: top;
+    &:hover {
+      color: lightcoral;
+    }
+  }
+}
+.mainNavTagsArea {
+  position: fixed;
+  width: 16.6%;
+  margin: 0 -15px 0 -30px;
+}
+.folderDirectory {
+  margin-top: 7px;
+}
+.folderCategory {
+  span {
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #5bc0de;
+    }
+  }
+}
+.folderList-openFolder {
+  color: greenyellow;
+  .folderIcon {
+    color: greenyellow;
+  }
+}
+.loadMore {
+  cursor: pointer;
+  color: lightcoral;
+  width: 100px;
+  margin: 10px auto;
+  text-align: center;
+  font-size: 18px;
+  .glyphicon {
+    font-size: 30px;
+  }
+}
+.searchArea {
+  position: fixed;
+  &.glyphicon {
+    font-size: 18px;
+  }
+  .searchFieldWithoutBorder {
+    border: none;
+    border-bottom: 1px solid lightblue;
+    outline:medium;
+    margin-left: 10px;
+    background-color: #ffffff;
+  }
+}
+.searchResultArea {
+  text-align: center;
+}
+
+.myFolderTree-foldersPanel {
+  position: relative;
+  display: inline-block;
+//  top: 6px;
+  z-index: 100;
+}
+.myFolderTree {
+  position: absolute;
+  width: 800px;
+}
+.myFolderTree ul {
+  display: inline-block;
+  margin: 0;
+  padding-left: 0;
+  background-color: lightseagreen;
+  line-height: 30px;
+  color: white;
+  position: absolute;
+}
+.myFolderTree ul, .myFolderTree ul>li {
+  list-style-type: none;
+
+}
+.myFolderTree li{
+//  width: 100px;
+  margin-left: 0;
+  padding: 0 5px;
+  line-height: 30px;
+}
+.myFolderTree li:hover{
+  background-color: rgb(224, 224, 224);
+  color: lightseagreen;
+  cursor: pointer;
+//  border-right: 1px solid lightgreen;
+}
+.pageViewCollectBody {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.selectFolderBtn {
+  background-color: lightgreen;
+  padding: 10px;
+  color: $icon-selected-color;
+}
+.selectedColor {
+  color: $icon-selected-color;
+}
+.panelBase {
+  height: $page-view-iframe-height;
+}
+.inputWarning {
+  color: $input-warning-color;
+}
+label.control-label {
+  letter-spacing: 5px;
+}
+.panelPlainHead {
+  color: lightblue;
+  .panelPlainHead-text {
+    vertical-align: top;
+  }
+}
+.userInfoContainer {
+  text-align: center;
+  width: 75px;
+  img {
+    max-width: 75px;
+    max-height: 75px;
+  }
+  .userInfoName {
+    color: gray;
+  }
+}
+.likeArea {
+  text-align: right;
+  font-size: 16px;
+  color: #add8e6;
+}
+.containerOverall{
+  padding: 15px 25px 0;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+//  background-color: #F0F0F0;
+  margin-top: -15px;
+  min-height: 800px;
+}
+.collectBtn{
+  margin-top: 10px;
+  color: lightgreen;
+  font-weight: 700;
+}
+.introduceToolInfo {
+  background-color: black;
+  border-color: #000000;
+  color: #ffffff;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+.collectToolArea {
+  text-align: center;
+  margin-bottom: 15px;
+  .collectLink {
+    display: inline-block;
+    background-color: white;
+    padding: 10px;
+    cursor: move;
+    color: black;
+    font-size: 20px;
+    border-radius: 5px;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+.inlineInstallTool {
+  display: inline-block;
+  background-color: #add8e6;
+  padding: 5px;
+  cursor: move;
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+a.inlineInstallTool:hover {
+  text-decoration: none;
+}
+.collectToolFeature {
+  line-height: 30px;
+}
+ul.listCommonStyle, ul.listCommonStyle > li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.panel-heading {
+  font-weight: 700px;
+}
+.demonImg{
+  margin: 10px auto;
+}
+input.showError.ng-invalid {
+  border: 1px solid red;
+}
+.showError {
+  color:red;
+}
+.regist-uploadImage {
+//  input[type=file]{
+//    margin:0 auto;
+//  }
+}
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+.registStep {
+  line-height: 25px;
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: lightblue;
+  display:inline-block;
+}
+.openOrgTip {
+  position: absolute;
+  margin: 0 auto;
+  top: 0;
+  left: 40%;
+}
+
+
+
+
