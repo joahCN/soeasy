@@ -45,8 +45,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><button type="button" ng-click="goto('/installTool')" class="btn btn-default collectBtn">搜集工具</button></li>
-                    <li><a href="#login" ng-hide="loginUser">Login</a></li>
-                    <li><a href="#regist" ng-hide="loginUser">regist</a></li>
+                    <li><a href="#login" ng-hide="loginUser"><span class="glyphicon glyphicon-user labelIcon"></span>登录</a></li>
+                    <li><a href="#regist" ng-hide="loginUser"><span class="glyphicon glyphicon-flag labelIcon"></span>注册</a></li>
                     <li class="dropdown" ng-show="loginUser">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{loginUser.name}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">

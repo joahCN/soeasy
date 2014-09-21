@@ -4,7 +4,7 @@
             <div class="mainNavTagsArea">
 
                 <ul class="list-group navTags">
-                    <li ng-click="filterCategory(category)" class="list-group-item" ng-repeat="category in categories | orderBy: 'id' ">
+                    <li ng-click="filterCategory(category)" class="list-group-item" ng-class="{checked: searchCategory.id == category.id}" ng-repeat="category in categories | orderBy: 'id' ">
                         <span class="glyphicon glyphicon-filter">
                         </span>
                         <label>{{category.name}}</label>

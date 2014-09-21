@@ -1,13 +1,15 @@
 <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-        <div>
-            <h3 style="text-align: center">新用户注册</h3>
+    <div class="col-sm-8 col-sm-offset-2 mainContainerBg registPanel">
+        <div style="margin-bottom: 20px;">
+            <h3 class="panelHeaderTitle">用户注册</h3>
+            <span class="registStep">
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="defaultStep" ng-class="{'currentStep' : isFirstStep}">填写基本信息</span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="defaultStep" ng-class="{'currentStep' : isSecondStep}">上传个人图片</span>
+            </span>
         </div>
         <div ng-show="isFirstStep">
-            <span class="registStep">
-                <span class="glyphicon glyphicon-tag"></span>
-                <span>填写基本信息</span>
-            </span>
 
             <form name="registForm" class="form-horizontal" role="form">
                 <div class="form-group" ng-class="{'has-error': registForm.name.$invalid && user.name}">
@@ -48,10 +50,6 @@
 
         <div ng-show="isSecondStep" class="regist-uploadImage">
             <div class="alert alert-success" role="alert">注册成功，请上传个人图像，开始奇妙之旅吧</div>
-            <span class="registStep">
-                <span class="glyphicon glyphicon-tag"></span>
-                <span>上传图片</span>
-            </span>
             <div style="text-align: center">
                 <span class="btn btn-success btn-file">
                     上传个人图像<input type="file" accept="image/*" ng-file-select="onFileSelect($files)">

@@ -9,7 +9,9 @@
         <div class="col-md-12">
             <ol class="breadcrumb">
                 <li><a href="#userProfile/{{folder.userId}}">{{folder.name}}</a></li>
-                <li>{{page.title}}</li>
+                <li>{{page.title}}
+                    <span class="glyphicon glyphicon-info-sign pageViewNotOpenTip"></span><a ng-href="{{page.link}}" target="_blank">打不开?查看原文</a>
+                </li>
                 <li class="pull-right pageOpBar">
                     <span ng-click="showSelectedPanel('content')" class="glyphicon glyphicon-file" ng-class="{'selectedColor': panelStatus.content}"></span>
                     <span ng-click="showSelectedPanel('collect')" class="glyphicon glyphicon-star" ng-class="{'selectedColor': panelStatus.collect}"></span>
@@ -18,9 +20,9 @@
             </ol>
             <div class="panel panel-default" style="position: relative;">
                 <div  ng-show="panelStatus.content" class="panel-body">
-                    <div class="alert alert-info openOrgTip openOrgTip">
-                        <a ng-href="{{page.link}}" target="_blank">打不开，查看原文</a>
-                    </div>
+                    <!--<div class="alert alert-info openOrgTip openOrgTip">-->
+                        <!--<a ng-href="{{page.link}}" target="_blank">打不开，查看原文</a>-->
+                    <!--</div>-->
                     <iframe iframe-loading load-url="page.link" class="pageIframePanel" ng-src="{{page.link}}"></iframe>
                 </div>
                 <div ng-show="panelStatus.collect" class="panel-body panelBase">
