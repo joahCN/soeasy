@@ -2,8 +2,8 @@
     <div class="row">
 
     </div>
-    <div class="row">
-        <div style="position: absolute;left: 0">
+    <div class="row" style="position: relative;">
+        <div style="position: absolute;left: -20px;">
             <span ng-click="showPre()" class="glyphicon glyphicon-chevron-left prePage"></span>
         </div>
         <div class="col-md-12">
@@ -31,8 +31,8 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <h3 class="panelPlainHead">
-                                    <span class="glyphicon glyphicon-bookmark"></span>
-                                    <span class="panelPlainHead-text">添加到我的收藏夹</span>
+                                    <span class="glyphicon glyphicon-share-alt"></span>
+                                    <span class="panelPlainHead-text">转载</span>
                                 </h3>
                             </div>
                         </div>
@@ -66,12 +66,14 @@
 
                     </form>
                 </div>
-                <div ng-show="panelStatus.opResult" class="panel-body">
-                    <div class="alert alert-success" role="alert">操作成功</div>
+                <div ng-show="panelStatus.opResult" class="panel-body panelBase">
+                    <div class="center-block alarm" style="width: 200px;">
+                        <span class="glyphicon glyphicon-exclamation-sign"></span>操作成功
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="position: absolute; right: 0">
+        <div style="position: absolute; right: -15px;">
             <span ng-click="showNext()" class="glyphicon glyphicon-chevron-right nextPage"></span>
         </div>
     </div>

@@ -5228,7 +5228,8 @@ body {
 
 .pageIframePanel {
   height: 600px;
-  width: 100%; }
+  width: 100%;
+  border: none; }
 
 .searchItemsContainer {
   background-color: #ffffff; }
@@ -5348,15 +5349,16 @@ body {
   font-size: 18px;
   line-height: 34px; }
   .folderMark .glyphicon, .folderNavTitle .glyphicon {
-    color: greenyellow;
-    vertical-align: bottom; }
+    color: #1abc9c;
+    vertical-align: bottom;
+    padding-right: 5px; }
   .folderMark .separator:before, .folderNavTitle .separator:before {
     content: " / ";
     vertical-align: bottom;
     line-height: 1; }
   .folderMark .folderMark-folderName, .folderNavTitle .folderMark-folderName {
     vertical-align: bottom;
-    color: lightblue;
+    color: gray;
     line-height: 1; }
 
 .folderNavTitle {
@@ -5406,7 +5408,7 @@ body {
     border: none;
     line-height: 18px;
     vertical-align: middle;
-    background-color: lightgrey;
+    background-color: #f8f8f8;
     margin-bottom: 5px;
     cursor: pointer; }
     .navTags li:hover {
@@ -5414,7 +5416,7 @@ body {
       color: lightblue; }
     .navTags li.checked {
       background-color: white;
-      color: lightblue; }
+      color: #1abc9c; }
     .navTags li span.glyphicon {
       vertical-align: top; }
   .navTags label {
@@ -5522,7 +5524,8 @@ label.control-label {
   letter-spacing: 5px; }
 
 .panelPlainHead {
-  color: lightblue; }
+  color: #1abc9c;
+  border-bottom: 1px solid; }
   .panelPlainHead .panelPlainHead-text {
     vertical-align: top; }
 
@@ -5665,3 +5668,12 @@ input.showError.ng-invalid {
   font-size: 16px;
   top: auto;
   padding-right: 5px; }
+
+.alarm {
+  color: gray;
+  font-size: 18px; }
+  .alarm .glyphicon {
+    color: lightcoral;
+    font-size: 30px;
+    vertical-align: middle;
+    padding-right: 5px; }

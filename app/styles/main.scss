@@ -266,6 +266,7 @@ body {
 .pageIframePanel {
   height: $page-view-iframe-height;
   width: 100%;
+  border: none;
 }
 .searchItemsContainer {
   background-color: #ffffff;
@@ -404,8 +405,9 @@ body {
   font-size: 18px;
   line-height: 34px;
   .glyphicon {
-    color:greenyellow;
+    color:#1abc9c;
     vertical-align: bottom;
+    padding-right: 5px;
   }
   .separator:before{
     content: " / ";
@@ -414,7 +416,7 @@ body {
   }
   .folderMark-folderName {
     vertical-align: bottom;
-    color: lightblue;
+    color: gray;
     line-height: 1;
   }
 }
@@ -471,7 +473,7 @@ body {
     border: none;
     line-height: 18px;
     vertical-align: middle;
-    background-color: lightgrey;
+    background-color: #f8f8f8;
     margin-bottom: 5px;
     cursor: pointer;
     &:hover{
@@ -480,7 +482,7 @@ body {
     }
     &.checked {
       background-color: white;
-      color: lightblue;
+      color: #1abc9c;
     }
     span.glyphicon {
       vertical-align: top;
@@ -604,7 +606,8 @@ label.control-label {
   letter-spacing: 5px;
 }
 .panelPlainHead {
-  color: lightblue;
+  color: #1abc9c;
+  border-bottom: 1px solid;
   .panelPlainHead-text {
     vertical-align: top;
   }
@@ -760,5 +763,14 @@ input.showError.ng-invalid {
   top: auto;
   padding-right: 5px;
 }
-
+.alarm {
+  color: gray;
+  font-size: 18px;
+  .glyphicon {
+    color: lightcoral;
+    font-size: 30px;
+    vertical-align: middle;
+    padding-right: 5px;
+  }
+}
 

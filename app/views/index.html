@@ -41,10 +41,16 @@
 
             </div>
             <div class="row" ng-show="searchKey && filteredItems && filteredItems.length == 0">
-                <div class="center-block">
+                <div class="center-block alarm" style="width: 450px;">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
                     没有搜索结果，
                     <button type="button" ng-click="loadKeyItems(false)" class="btn btn-default" ng-show="searchCategory && searchCategory.id">{{searchCategory.name}} 中继续查找</button>
                     <button type="button" ng-click="loadKeyItems(true)" class="btn btn-default">全局查找</button>
+                </div>
+            </div>
+            <div class="row" ng-show="!searchKey && filteredItems && filteredItems.length == 0">
+                <div class="center-block alarm" style="width: 450px;">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>该分类还没有收藏。快去收藏分享一个吧，抢占沙发
                 </div>
             </div>
             <div class="row" ng-hide="isLoadMore() || (filteredItems && filteredItems.length == 0)">
