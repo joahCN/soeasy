@@ -1,8 +1,14 @@
 <div class="row" style="margin-top: -15px;">
     <div class="introduceToolInfo">
         <p class="collectToolArea">
-            <a class="collectLink" ng-click="return false;" ng-href="{{link}}">搜藏神器</a>
+            <a class="collectLink" ng-click="clickToolTip($event)" ng-href="{{link}}">搜藏神器</a>
+            <span ng-show="isShowTip" class="alarm installToolTip">
+                <span class="glyphicon glyphicon-exclamation-sign"></span>请拖入收藏栏或右键添加到收藏夹
+            </span>
         </p>
+        <!--<div ng-show="isShowTip" class="center-block alarm">-->
+            <!--<span class="glyphicon glyphicon-exclamation-sign"></span>请拖入收藏栏或右键添加到收藏夹-->
+        <!--</div>-->
         <ul class="collectToolFeature">
             <li>
                 首款跨浏览器、跨平台的云收藏夹。无论何时何地，一键收藏，所有终端无缝同步。妈妈在也不担心我的收藏夹丢失了。
@@ -26,7 +32,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">安装方法</div>
             <div class="panel-body">
-                按住鼠标左键不放，将<a class="inlineInstallTool collectLink" ng-click="return false;" ng-href="{{link}}">搜藏神器</a>拖入浏览器收藏栏，松开鼠标即可。
+                按住鼠标左键不放，将<a class="inlineInstallTool collectLink" ng-click="clickToolTip($event)" ng-href="{{link}}">搜藏神器</a>拖入浏览器收藏栏，松开鼠标即可。
                 <img class="demonImg" src="../images/collectBar.png">
             </div>
         </div>
@@ -48,7 +54,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">安装方法</div>
             <div class="panel-body">
-                右键点击<a class="inlineInstallTool collectLink" ng-click="return false;" ng-href="{{link}}">搜藏神器</a>，在弹出菜单中选择“添加到收藏夹”
+                右键点击<a class="inlineInstallTool collectLink" ng-click="clickToolTip($event)" ng-href="{{link}}">搜藏神器</a>，在弹出菜单中选择“添加到收藏夹”
                 <img class="demonImg" src="../images/collectFolder.png">
             </div>
         </div>

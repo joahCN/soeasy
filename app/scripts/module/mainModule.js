@@ -14,6 +14,8 @@ define(['angular','angular-route', 'provider/routeResolver', 'angular-resource',
 
         $sceProvider.enabled(false);
 
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|javascript):/);
+
         $routeProvider.when('/', route.resolve('index'))
             .when('/detail',route.resolve('detail'))
             .when('/clipImg',route.resolve('clipImg'))

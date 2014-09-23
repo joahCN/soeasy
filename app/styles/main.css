@@ -5677,3 +5677,9 @@ input.showError.ng-invalid {
     font-size: 30px;
     vertical-align: middle;
     padding-right: 5px; }
+
+.installToolTip {
+  color: #ffff00;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px; }
