@@ -1,7 +1,7 @@
 define(['angular','angular-route', 'provider/routeResolver', 'angular-resource','angular-cookies', 'angular.fileUpload'], function(angular){
    var module = angular.module('mainModule', ['ngRoute', 'ngResource','routeResolverServices','ngCookies','angularFileUpload']);
-    module.config(['$routeProvider', 'routeResolverProvider','$controllerProvider', '$compileProvider','$filterProvider','$provide','$sceProvider',
-    function($routeProvider, routeResolverProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $sceProvider){
+    module.config(['$routeProvider', 'routeResolverProvider','$controllerProvider', '$compileProvider','$filterProvider','$provide','$sceProvider', '$locationProvider',
+    function($routeProvider, routeResolverProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $sceProvider, $locationProvider){
         module.register = {
             controller: $controllerProvider.register,
             directive: $compileProvider.directive,
@@ -25,6 +25,8 @@ define(['angular','angular-route', 'provider/routeResolver', 'angular-resource',
             .when('/installTool', route.resolve('installTool'))
             .when('/regist', route.resolve('regist'));
 
+//        $locationProvider.html5Mode(true);
+
     }]).run(['loginService','$rootScope','$location',function(loginService, $rootScope, $location){
             loginService.isLogin(function(result){
                 if(result.status.success){
@@ -39,7 +41,12 @@ define(['angular','angular-route', 'provider/routeResolver', 'angular-resource',
             };
             $rootScope.goto = function(path){
                 $location.path(path);
-            }
+            };
+            $rootScope.requestCount = 0;
+//            $rootScope.$on("routeChangeStart", function(){
+//                $rootScope.requestCount = 0;
+//                $rootScope.isRequestInProgress = false;
+//            });
         }]);
     return module;
 });

@@ -1,7 +1,7 @@
 'use strict';
 
-define(['appModule','service/indexService'], function(module){
-    module.register.controller('indexController', ['$scope', 'indexService', '$location',function($scope, indexService, $location){
+define(['appModule','service/indexService','service/constantService'], function(module){
+    module.register.controller('indexController', ['$scope', 'indexService', '$location','constantService',function($scope, indexService, $location, constantService){
 
         var categoryObj = {
             category: "",
@@ -94,6 +94,10 @@ define(['appModule','service/indexService'], function(module){
                 }
                 return label.split(/\s+/);
             };
+
+            $scope.filterCategoryCss = function(cid){
+                return constantService.categoryCss[cid];
+            }
 
         }
 

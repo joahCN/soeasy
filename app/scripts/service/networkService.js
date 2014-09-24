@@ -8,7 +8,7 @@ define(['require'], function(require){
             var timeout = 5000;
             var cacheId = "networkData";
             var cache = $cacheFactory(cacheId);
-            var requestCount = 0;
+            var requestCount = $rootScope.requestCount || 0;
             var REQUEST_QUEUE_FINISH = "REQUEST_QUEUE_FINISH";
             $rootScope.isRequestInProgress = false;
 
@@ -63,7 +63,7 @@ define(['require'], function(require){
 
                     function responseCallback(result){
                         requestCount--;
-                        if(requestCount == 0){
+                        if(requestCount <= 0){
                             $rootScope.$emit(REQUEST_QUEUE_FINISH);
                             $rootScope.isRequestInProgress = false;
                         }
