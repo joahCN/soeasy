@@ -13,9 +13,10 @@
                     <span class="glyphicon glyphicon-info-sign pageViewNotOpenTip"></span><a ng-href="{{page.link}}" target="_blank">打不开?查看原文</a>
                 </li>
                 <li class="pull-right pageOpBar">
+                    <!--ng-click="showSelectedPanel('collect')"-->
                     <span ng-click="showSelectedPanel('content')" class="glyphicon glyphicon-file" ng-class="{'selectedColor': panelStatus.content}"></span>
-                    <span ng-click="showSelectedPanel('collect')" class="glyphicon glyphicon-star" ng-class="{'selectedColor': panelStatus.collect}"></span>
-                    <span ng-click="likeSite(page)" class="glyphicon glyphicon-thumbs-up"><span style="font-family: sans-serif;vertical-align: top">({{page.likeAmount}})</span></span>
+                    <span login-filter ng-click="showSelectedPanel('collect')"  class="glyphicon glyphicon-star" ng-class="{'selectedColor': panelStatus.collect}"></span>
+                    <span login-filter ng-click="likeSite(page)" class="glyphicon glyphicon-thumbs-up"><span style="font-family: sans-serif;vertical-align: top">({{page.likeAmount}})</span></span>
                 </li>
             </ol>
             <div class="panel panel-default" style="position: relative;">

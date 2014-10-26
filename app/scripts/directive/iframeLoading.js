@@ -1,15 +1,21 @@
 'use strict'
 
 define(['appModule'], function(module){
-   module.register.directive("iframeLoading", ["$rootScope", function($rootScope){
+   module.register.directive("iframeLoading", ["$rootScope","$timeout", function($rootScope, $timeout){
        return {
            restrict: 'A',
            scope: {
              loadUrl: '='
            },
            link: function(scope, element){
+
+               var windowH = $(window).height();
+               var computedH = parseInt(windowH) - 117;
+               var orgH =  $(element).css('height');
+               $(element).css('height',parseInt(orgH) > computedH ? orgH : computedH);
+
                var oldDoc;
-               element.on("load", function(){
+               element.on("load, DOMContentLoaded", function(){
                    scope.$apply(function(){
 //                       if(oldDoc == element.document){
 //                           console.log("doc changed");
@@ -30,6 +36,9 @@ define(['appModule'], function(module){
                    if(newValue !== oldValue){
                        $(element).empty();
                        $rootScope.isRequestInProgress = true;
+                       $timeout(function(){
+                           $rootScope.isRequestInProgress = false;
+                       }, 4000);
                    }
                });
            }

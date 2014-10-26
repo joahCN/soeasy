@@ -19,11 +19,12 @@
     <link rel="stylesheet" href="bower_components/jquery-plugins/jquery.gallery/css/style.css">
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1411566211_1271188.css">
+    <link rel="stylesheet" href="styles/flat-sub.css">
     <!-- endbuild -->
       <script src="bower_components/jquery/jquery.min.js"></script>
       <script src="bower_components/ng-file-upload/angular-file-upload-shim.min.js"></script>
   </head>
-  <body>
+  <body ng-controller="mainController">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -48,8 +49,8 @@
                     <li><button type="button" ng-click="goto('/installTool')" class="btn btn-default collectBtn">搜集工具</button></li>
                     <li><a href="#login" ng-hide="loginUser"><span class="glyphicon glyphicon-user labelIcon"></span>登录</a></li>
                     <li><a href="#regist" ng-hide="loginUser"><span class="glyphicon glyphicon-flag labelIcon"></span>注册</a></li>
-                    <li class="dropdown" ng-show="loginUser">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{loginUser.name}} <b class="caret"></b></a>
+                    <li class="dropdown" ng-show="loginUser" style="margin-left: 10px">
+                        <a flat-invoke="dropdown" href="#" class="dropdown-toggle" data-toggle="dropdown">{{loginUser.name}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#userProfile/{{loginUser.id}}">个人主页</a></li>
                             <li><a href="#" ng-click="logout()">退出</a></li>
@@ -62,10 +63,23 @@
     </nav>
 
     <!-- Add your site or application content here -->
-    <div class="container-fluid" style="margin-top: 60px;max-width: 1263px;">
+    <div class="container-fluid" style="margin-top: 60px;max-width: 1263px;min-height: 800px;">
 
         <div ng-view></div>
     </div>
+
+    <footer class="navFooter">
+        <div class="container center-block">
+            <div class="row">
+                <button type="button" ng-click="goto('/installTool')" class="btn btn-default btn-big footerCollectBtn">搜集工具</button>
+            </div>
+            <div class="row">
+                <a ng-href="#installTool" class="footerLink">关于我们</a>
+                <a ng-href="#installTool" class="footerLink">媒体合作</a>
+                <a ng-href="#installTool" class="footerLink">搜集工具</a>
+            </div>
+        </div>
+    </footer>
 
     <div ng-show="isRequestInProgress" id="loadingArea" loading-area class="loadingArea">
         <div class="loading">
@@ -80,7 +94,7 @@
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <script src="bower_components/respond/src/respond.js"></script>
     <![endif]-->
-
+    <!--<script src="scripts/flat-ui.js"></script>-->
     <!-- endbower -->
     <script data-main="scripts/main.js" src="bower_components/requirejs/require.js"></script>
     <!-- endbuild -->

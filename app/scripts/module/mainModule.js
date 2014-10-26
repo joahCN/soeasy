@@ -47,6 +47,9 @@ define(['angular','angular-route', 'provider/routeResolver', 'angular-resource',
 //                $rootScope.requestCount = 0;
 //                $rootScope.isRequestInProgress = false;
 //            });
-        }]);
+        }])
+        .controller('mainController', function(){
+
+        });
     return module;
 });

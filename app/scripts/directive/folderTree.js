@@ -24,7 +24,7 @@ define(['appModule'], function(module){
 
                 $("#selectedFolderArea").on("mouseover", function(){
                     if(container.children().length == 0){
-                        showFolders();
+                        showFolders("", {top: 9});
                     } else {
                         container.empty();
                     }
@@ -32,11 +32,12 @@ define(['appModule'], function(module){
 
                 function showFolders(id, position){
                     var folders = filterFolder(id);
-                    createNode(folders, position);
+                    folders && folders.length> 0 && createNode(folders, position);
                 }
 
                 function createNode(folders, position){
                     var ul = document.createElement("ul");
+                    var gap = 9;
 
                     folders.forEach(function(folder){
                         var li = document.createElement("li");
@@ -65,23 +66,24 @@ define(['appModule'], function(module){
                         var parentPosition = $(parent).position();
                         var position = {
                             top: targetPosition.top + parentPosition.top,
-                            left: targetPosition.left + parentPosition.left + $(parent).width()
+                            left: targetPosition.left + parentPosition.left + $(parent).width() + gap
                         };
                         id && showFolders(id, position);
                     });
                     container.append(ul);
                     var ulPos = $(ul).position();
                     var ulNodeWidth = $(ul).width();
-                    $(ul).css({
-                        width: ulNodeWidth,
-                        height: itemSize.height*folders.length
-                    });
+//                    $(ul).css({
+//                        width: ulNodeWidth,
+//                        height: itemSize.height*folders.length
+//                    });
                     if(position){
                         $(ul).css({
                             left: position.left,
                             top: position.top
                         });
                     }
+
 
                 }
                 function filterFolder(parentId){

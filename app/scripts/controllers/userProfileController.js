@@ -236,6 +236,7 @@ define(['appModule','service/userProfileService'], function(module){
                 function queryCategory(){
                     userProfileService.queryCategory(function(result){
                         $scope.categoryList = result.results;
+//                        renderRadiocheck();
                     });
                 }
                 $scope.checkCategory = function (category, ele){
@@ -258,6 +259,11 @@ define(['appModule','service/userProfileService'], function(module){
                 $scope.newFolder.headerText = "添加收藏夹";
                 $scope.newFolder.actionText = "添 加";
                 $scope.newFolder.parentId = "";
+            }
+
+            renderRadiocheck();
+            function renderRadiocheck(){
+                $('[data-toggle="radio"]').radiocheck();
             }
 
 

@@ -113,18 +113,19 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">权限</label>
                     <div class="col-sm-10">
-                        <label class="radio-inline">
-                            <input type="radio" checked="true" ng-model="newFolder.security" name="folderSecurity" value="0"> 公开
+                        <label class="radio-inline radio">
+                            <input type="radio" data-toggle="radio" data-radiocheck-toggle="radio" checked="true" ng-model="newFolder.security" name="folderSecurity" value="0"> 公开
                         </label>
-                        <label class="radio-inline">
-                            <input type="radio" ng-model="newFolder.security" name="folderSecurity" value="1"> 隐私
+                        <label class="radio-inline radio">
+                            <input type="radio" data-toggle="radio" data-radiocheck-toggle="radio" ng-model="newFolder.security" name="folderSecurity" value="1"> 隐私
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">归类</label>
                     <div class="col-sm-10">
-                        <select class="folderDirectory" ng-model="newFolder.parentId" ng-options="folder.id as folder.name for folder in folderDropdownList">
+
+                        <select flat-invoke="select2" data-toggle="select" class="folderDirectory form-control select select-default mrs mbm" ng-model="newFolder.parentId" ng-options="folder.id as folder.name for folder in folderDropdownList">
                             <!--<option value="">-- 根目录 --</option>-->
                         </select>
                         <!--<p class="form-control-static">{{parentFolder.name}}</p>-->
@@ -132,10 +133,10 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">分类</label>
-                    <div class="col-sm-10 folderCategory">
+                    <div class="col-sm-10">
                         <!--<input type="hidden" name="selectedCategory" ng-model="selectedCategory" required>-->
-                        <label class="radio-inline" ng-repeat="category in categoryList">
-                            <input type="radio" ng-model="newFolder.category" name="myCategory" value="{{category.id}}" required>{{category.name}}
+                        <label class="radio-inline radio" ng-repeat="category in categoryList">
+                            <input flat-invoke="radiocheck" type="radio" data-toggle="radio" data-radiocheck-toggle="radio" ng-model="newFolder.category" name="myCategory" value="{{category.id}}" required>{{category.name}}
                         </label>
                         <!--<label class="checkbox-inline">-->
                             <!--<input type="checkbox" id="inlineCheckbox2" value="option1">影视-->

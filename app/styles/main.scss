@@ -18,7 +18,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 /* Space out content a bit */
 body {
 //    padding-top: 20px;
-    padding-bottom: 20px;
+//    padding-bottom: 20px;
     background-color: #e7e7e7;
 }
 
@@ -579,14 +579,41 @@ body {
 .myFolderTree li{
 //  width: 100px;
   margin-left: 0;
-  padding: 0 5px;
+  padding: 6px 9px;
   line-height: 30px;
+  -webkit-transition: .25s;
+  transition: .25s;
 }
 .myFolderTree li:hover{
   background-color: rgb(224, 224, 224);
   color: lightseagreen;
   cursor: pointer;
 //  border-right: 1px solid lightgreen;
+}
+.myFolderTree ul:before {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 9px 9px 9px 0;
+  border-right-color: lightseagreen;
+  content: " ";
+  top: 5px;
+  left: -9px;
+}
+.myFolderTree ul:first-child:before {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0 9px 9px 9px;
+  border-bottom-color: lightseagreen;
+  content: " ";
+  top: -9px;
+  left: 50%;
+  margin-left: -9px;
 }
 .pageViewCollectBody {
   max-width: 800px;
@@ -641,12 +668,16 @@ label.control-label {
   min-height: 800px;
   background-color: #ffffff;
 }
-.collectBtn{
+.collectBtn, .footerCollectBtn{
   margin-top: 10px;
   color: #ffffff;
   font-weight: 700;
   background-color: #1abc9c;
   border: none;
+}
+.footerCollectBtn {
+  width: 200px;
+  font-size: 18px;
 }
 .introduceToolInfo {
   background-color: black;
@@ -686,6 +717,7 @@ a.inlineInstallTool:hover {
 }
 .collectToolFeature {
   line-height: 30px;
+  padding-left: 15px;
 }
 ul.listCommonStyle, ul.listCommonStyle > li {
   list-style: none;
@@ -695,8 +727,14 @@ ul.listCommonStyle, ul.listCommonStyle > li {
 .panel-heading {
   font-weight: 700px;
 }
-.demonImg{
-  margin: 10px auto;
+.installDemo {
+  min-height: 250px;
+  .imgStep {
+    text-align: center;
+  }
+  .demonImg{
+    margin: 10px auto;
+  }
 }
 input.showError.ng-invalid {
   border: 1px solid red;
@@ -783,4 +821,44 @@ input.showError.ng-invalid {
   margin-left: 10px;
   margin-top: 10px;
 }
-
+label.radio, label.checkbox {
+  margin-top: 7px !important;
+  padding-top: 0 !important;
+}
+.select2-drop .select2-result-selectable .select2-result-label {
+//  background-color: lightgray !important;
+}
+.radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+  margin-left: 0 !important;
+}
+.radio-inline {
+  margin-right: 10px;
+}
+.dropdown {
+  .dropdown-menu {
+    min-width: 100%;
+  }
+}
+.navFooter {
+  background-color: #808080;
+  color: #ffffff;
+  padding: 20px 0;
+  min-height: 30px;
+  margin-top: 20px;
+  text-align: center;
+  .row {
+    margin: 10px 0;
+  }
+  .footerLink {
+    padding: 0 10px;
+    color: white;
+  }
+}
+.installStep2 {
+  min-height: 200px;
+  background-color: lightgray;
+  ul {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
