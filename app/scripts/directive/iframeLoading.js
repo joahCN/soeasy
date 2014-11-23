@@ -2,6 +2,10 @@
 
 define(['appModule'], function(module){
    module.register.directive("iframeLoading", ["$rootScope","$timeout", function($rootScope, $timeout){
+       var EVENTS = {
+           LOAD_PENDING: 'loadPending',
+           LOAD_COMPLETE: 'loadComplete'
+       };
        return {
            restrict: 'A',
            scope: {
@@ -17,16 +21,15 @@ define(['appModule'], function(module){
                var oldDoc;
                element.on("load, DOMContentLoaded", function(){
                    scope.$apply(function(){
-//                       if(oldDoc == element.document){
-//                           console.log("doc changed");
-//                       }
                        $rootScope.isRequestInProgress = false;
+                       $rootScope.$broadcast(EVENTS.LOAD_COMPLETE);
                    });
                });
                element.onreadystatechange = function(){
                    if(!this.readyState||this.readyState=='loaded'||this.readyState=='complete'){
                        scope.$apply(function(){
                            $rootScope.isRequestInProgress = false;
+                           $rootScope.$broadcast(EVENTS.LOAD_COMPLETE);
                        });
                    }
                };
@@ -38,6 +41,7 @@ define(['appModule'], function(module){
                        $rootScope.isRequestInProgress = true;
                        $timeout(function(){
                            $rootScope.isRequestInProgress = false;
+                           $rootScope.$broadcast(EVENTS.LOAD_PENDING);
                        }, 4000);
                    }
                });

@@ -47,6 +47,31 @@
     color: white;
     position: absolute;
 }
+.soeasy-favTool-container-folderTree ul:before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 9px 9px 9px 0;
+    border-right-color: lightseagreen;
+    content: " ";
+    top: 5px;
+    left: -9px;
+}
+.soeasy-favTool-container-folderTree ul:first-child:before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0 9px 9px 9px;
+    border-bottom-color: lightseagreen;
+    content: " ";
+    top: -9px;
+    left: 50%;
+    margin-left: -9px;
+}
 .soeasy-favTool-container-folderTree ul, .soeasy-favTool-container-folderTree ul>li {
     list-style-type: none;
 
@@ -162,4 +187,7 @@
     position: relative;
     top: 5px;
     margin-left: 10px
+}
+.soeasy-collect-addCancelBtn {
+    margin-left: 8px;
 }

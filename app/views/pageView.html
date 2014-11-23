@@ -10,7 +10,7 @@
             <ol class="breadcrumb">
                 <li><a href="#userProfile/{{folder.userId}}">{{folder.name}}</a></li>
                 <li>{{page.title}}
-                    <span class="glyphicon glyphicon-info-sign pageViewNotOpenTip"></span><a ng-href="{{page.link}}" target="_blank">打不开?查看原文</a>
+                    <span class="glyphicon glyphicon-info-sign pageViewNotOpenTip"></span><a flat-invoke="tooltip" trigger-event register-events="registerEvents" title="打不开? 点击查看原文" data-toggle="tooltip" ng-href="{{page.link}}" target="_blank">打不开?查看原文</a>
                 </li>
                 <li class="pull-right pageOpBar">
                     <!--ng-click="showSelectedPanel('collect')"-->

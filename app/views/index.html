@@ -18,7 +18,7 @@
                 <!--<label>视频</label><label>专业</label><label>文学</label><label>杂文</label>-->
             <!--</div>-->
 
-            <div class="row indexItem" ng-repeat="item in filteredItems = ( items | filter: {category: searchCategory && searchCategory.id} | filter: searchKey)">
+            <div class="indexItem" ng-repeat="item in filteredItems = ( items | filter: {category: searchCategory && searchCategory.id} | filter: searchKey)">
                 <div class="media">
                     <span class="pull-left userInfoContainer">
                         <a href="#userProfile/{{getUserInfo(item, this).id}}"><img class="img-responsive img-thumbnail" ng-src="images/{{this.user.image}}"></a>

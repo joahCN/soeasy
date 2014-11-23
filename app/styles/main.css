@@ -5236,7 +5236,7 @@ body {
     background-color: lightgray; }
 
 .userProfileItems, .addFolderCol {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   min-height: 800px; }
 
 .userProfileItem {
@@ -5245,7 +5245,10 @@ body {
   position: relative; }
 
 .userProfileItems-header {
-  border-bottom: 1px dotted lightgray; }
+  border-bottom: 1px dotted lightgray;
+  margin: 0 -15px;
+  padding: 0 15px;
+  background: #f8f8f8; }
 
 .collectDatePoint {
   position: absolute;
@@ -5323,15 +5326,20 @@ body {
 .folderHeader {
   font-size: 34px;
   border-bottom: 1px solid lightgray;
-  line-height: 35px;
-  vertical-align: middle; }
+  line-height: 39px;
+  vertical-align: middle;
+  background-color: #f8f8f8;
+  margin: -10px;
+  padding: 10px;
+  padding-bottom: 0;
+  margin-bottom: 0; }
   .folderHeader .plusIcon {
     color: lightcoral;
     cursor: pointer;
     width: 20%;
     text-align: right; }
   .folderHeader .leftHomeBack {
-    color: lightblue;
+    color: #1abc9c;
     cursor: pointer;
     width: 20%; }
   .folderHeader .folderTitle {
@@ -5346,24 +5354,27 @@ body {
 
 .folderMark, .folderNavTitle {
   font-size: 18px;
-  line-height: 34px; }
+  line-height: 53px;
+  vertical-align: middle; }
   .folderMark .glyphicon, .folderNavTitle .glyphicon {
     color: #1abc9c;
-    vertical-align: bottom;
+    vertical-align: middle;
     padding-right: 5px; }
   .folderMark .separator:before, .folderNavTitle .separator:before {
     content: " / ";
-    vertical-align: bottom;
     line-height: 1; }
   .folderMark .folderMark-folderName, .folderNavTitle .folderMark-folderName {
-    vertical-align: bottom;
     color: gray;
     line-height: 1; }
 
 .folderNavTitle {
   display: block;
   border-bottom: 1px dotted lightgray;
-  padding-bottom: 10px; }
+  margin: 0 -15px;
+  padding: 0 15px;
+  background: #f8f8f8;
+  line-height: 55px;
+  vertical-align: middle; }
 
 .pageOpBar {
   width: 200px;
@@ -5384,7 +5395,9 @@ body {
 @media (min-width: 990px) {
   .fixedNav {
     position: fixed;
-    width: 277px; }
+    width: 287px;
+    background-color: white;
+    padding: 10px; }
 
   .userInfoFixed {
     position: fixed;

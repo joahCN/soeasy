@@ -4,7 +4,7 @@ define(['require'], function(require){
     return function(){
         var module = require("appModule");
         module.factory('networkService', ['$resource','$cacheFactory','$rootScope','$cookieStore','$upload', function($resource,$cacheFactory, $rootScope, $cookieStore, $upload){
-            var baseURL = "http://wx.xcjx.org/";//"/";
+            var baseURL = "http://wx.xcjx.org/";//"http://localhost:8080/";//"/";
             var timeout = 5000;
             var cacheId = "networkData";
             var cache = $cacheFactory(cacheId);

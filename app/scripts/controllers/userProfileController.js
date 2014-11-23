@@ -43,6 +43,9 @@ define(['appModule','service/userProfileService'], function(module){
                     });
                     $scope.folderDropdownList = angular.copy($scope.folders);
                     $scope.folderDropdownList.unshift(rootFolder);
+//                    $scope.$watch("folderDropdownList", function(){
+//                        $rootScope.$broadcast("folderDropdwonListChange");
+//                    });
                 });
             }
 
@@ -174,6 +177,7 @@ define(['appModule','service/userProfileService'], function(module){
                 $scope.folderDropdownList.unshift($scope.parentFolder);
                 $scope.newFolder.parentId = $scope.parentFolder.id;
                 $scope.$emit(events.FOLDER_CHANGE, true);
+//                $rootScope.$broadcast("folderDropdwonListChange");
             };
 
             $scope.$on(events.FOLDER_CHANGE, function(event,type){
@@ -200,10 +204,10 @@ define(['appModule','service/userProfileService'], function(module){
                 initNewFolder();
                 queryCategory();
 
-                $scope.checkFolderName = function(folderName, form){
-                    var plainName = $.trim(folderName);
+                $scope.checkFolderName = function(newFolder, form){
+                    var plainName = $.trim(newFolder.name);
                     form.folderName.$error.duplicate = $scope.folders.some(function(folder){
-                        return folder.name == plainName;
+                        return (newFolder.id != folder.id) && (folder.name == plainName);
                     });
                 };
 

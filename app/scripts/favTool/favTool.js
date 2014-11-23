@@ -4,68 +4,10 @@ var SoeasyModule = function($){
     var wrapperContainerId = "soeasy-favTool-container";
     var collectContainerId = "soeasy-favTool-container-content-collect";
     var loginContainerId = "soeasy-favTool-container-content-login";
-    var userFolder = [
-        {
-            id: 1,
-            name: '秋天的云'
-        },
-        {
-            id: 2,
-            name: '冬天的雪'
-        },
-        {
-            id: 3,
-            name: '夏天的凉风'
-        },
-        {
-            id: 4,
-            parentId: 1,
-            name: '秋天的云1'
-        },
-        {
-            id: 5,
-            parentId: 1,
-            name: '秋天的云2'
-        },
-        {
-            id: 6,
-            parentId: 1,
-            name: '秋天的云3'
-        },
-        {
-            id: 7,
-            parentId: 2,
-            name: '冬天的雪1'
-        },
-        {
-            id: 8,
-            parentId: 3,
-            name: '夏天的凉风1'
-        },
-        {
-            id: 9,
-            parentId: 8,
-            name: '夏天的凉风1'
-        },
-        {
-            id: 10,
-            parentId: 8,
-            name: '夏天的凉风1'
-        },
-        {
-            id: 11,
-            parentId: 10,
-            name: '夏天的凉风11'
-        },
-        {
-            id: 12,
-            parentId: 10,
-            name: '夏天的凉风11'
-        }
-
-    ];
+    var userFolder = [];
     var siteData = {}, loginData = {};
     var userInfo;
+    var isAddNewFolder;
     var itemSize = {
         width: 100,
         height: 30
@@ -149,7 +91,7 @@ var SoeasyModule = function($){
       container = $("#soeasy_category");
       $("#selectFolders").on("mouseover", function(){
           if(container.children().length == 0){
-              showFolders();
+              showFolders("", {top: 9});
           } else {
               container.empty();
           }
@@ -166,6 +108,7 @@ var SoeasyModule = function($){
         $("#soeasy-collect").on("click", function(){
             var title = $.trim($("#soeasy_title").val()),
                 label = $.trim($("#soeasy_label").val()),
+                folderName = $.trim($("#soeasy_forderName").val());
                 link = window.location.href;
             if(isEmpty(title)){
                 $("#soeasy_title").addClass("soeasy_input_warning");
@@ -175,15 +118,42 @@ var SoeasyModule = function($){
                 $("#soeasy_label").addClass("soeasy_input_warning");
                 return;
             }
-            if(!siteData.fid){
+            if(!siteData.fid && !isAddNewFolder){
                 $("#selectFolders").addClass("soeasy_bg_warning");
                 return;
+            }
+            if(isAddNewFolder){
+                if(isEmpty(folderName)){
+                    $("#soeasy_forderName").addClass("soeasy_bg_warning");
+                    return;
+                } else {
+                    siteData.folderName = encodeData(folderName);
+                }
             }
 
             siteData.title = encodeData(title);
             siteData.label = encodeData(label);
             siteData.link = encodeData(link);
             saveSiteData();
+        });
+        $("#soeasy-addNewFolder").on("click", function(){
+            $("#soeasy-favTool-newFolder").show();
+            $("#soeasy-cancelNewFolder").show();
+            $(this).hide();
+            isAddNewFolder = true;
+            $("#selectFolders").text("请选择父分类");
+            userFolder.unshift({
+                name: '根目录',
+                id : ''
+            });
+        });
+        $("#soeasy-cancelNewFolder").on("click", function(){
+            $("#soeasy-favTool-newFolder").hide();
+            $("#soeasy-addNewFolder").show();
+            $(this).hide();
+            isAddNewFolder = false;
+            $("#selectFolders").text("请选择分类");
+            userFolder.shift();
         });
     };
 
@@ -193,12 +163,13 @@ var SoeasyModule = function($){
 
     function showFolders(id, position){
         var folders = filterFolder(id);
-        createNode(folders, position);
+        folders && folders.length> 0 && createNode(folders, position);
     }
 
     function createNode(folders, position){
         var nodes = [];
         var ul = document.createElement("ul");
+        var gap = 9;
 //        nodes.push("<ul>");
 
         folders.forEach(function(folder){
@@ -225,7 +196,7 @@ var SoeasyModule = function($){
             var parentPosition = $(parent).position();
             var position = {
                 top: targetPosition.top + parentPosition.top,
-                left: targetPosition.left + parentPosition.left + $(parent).width()
+                left: targetPosition.left + parentPosition.left + $(parent).width() + gap
             };
 //            position.left += $(target).width();
             id && showFolders(id, position);

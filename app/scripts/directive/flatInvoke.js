@@ -5,9 +5,13 @@ define(['require'], function(require){
         module.directive("flatInvoke", function(){
             return {
                 restrict: "A",
+                priority: 0,
                 link: function(scope, ele, attrs) {
                     var action = attrs["flatInvoke"];
                     ele[action]();
+                    scope.$on("folderDropdwonListChange", function(){
+                        ele[action]();
+                    });
 //                ele.radiocheck();
                 }
             }

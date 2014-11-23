@@ -1,6 +1,6 @@
 'use strict';
 
-define(['appModule','service/indexService','service/userProfileService','directive/folderTree', 'directive/iframeLoading', 'directive/loginFilter'], function(module){
+define(['appModule','service/indexService','service/userProfileService','directive/folderTree', 'directive/iframeLoading', 'directive/loginFilter', 'directive/triggerEvent'], function(module){
     module.register.controller('pageViewController', ['$scope','$routeParams','indexService','userProfileService','storageService',
         function($scope,$routeParams,indexService,userProfileService, storageService){
             var moduleId = $routeParams.moduleId;
@@ -135,5 +135,11 @@ define(['appModule','service/indexService','service/userProfileService','directi
                 site.likeAmount ++;
                 site.isLiked = true;
             };
+
+            $scope.registerEvents = {
+                'loadPending': 'mouseover',
+                'loadComplete': 'mouseout'
+            };
+
     }])
 });
