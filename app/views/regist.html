@@ -1,61 +1,72 @@
 <div class="row">
-    <div class="col-sm-8 col-sm-offset-2 mainContainerBg registPanel">
+    <div class="col-sm-8 col-sm-offset-2 registPanel containerPanel">
         <div style="margin-bottom: 20px;">
-            <h3 class="panelHeaderTitle">用户注册</h3>
-            <span class="registStep">
-                <span class="glyphicon glyphicon-user"></span>
-                <span class="defaultStep" ng-class="{'currentStep' : isFirstStep}">填写基本信息</span>
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="defaultStep" ng-class="{'currentStep' : isSecondStep}">上传个人图片</span>
-            </span>
-        </div>
-        <div ng-show="isFirstStep">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">用户注册</h4>
+                </div>
+                <div class="panel-body">
+                    <span class="registStep">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="defaultStep" ng-class="{'currentStep' : isFirstStep}">填写基本信息</span>
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="defaultStep" ng-class="{'currentStep' : isSecondStep}">上传个人图片</span>
+                    </span>
+                    <div ng-show="isFirstStep">
 
-            <form name="registForm" class="form-horizontal" role="form">
-                <div class="form-group" ng-class="{'has-error': registForm.name.$invalid && user.name}">
-                    <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
-                    <div class="col-sm-6">
-                        <input name="name"  ensure-unique="{{user.name}}" type="text" ng-model="user.name" required ng-minlength="4" ng-maxlength="16" class="form-control" id="inputEmail3" placeholder="用户名">
+                        <form name="registForm" class="form-horizontal" role="form">
+                            <div class="form-group" ng-class="{'has-error': registForm.name.$invalid && user.name}">
+                                <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                                <div class="col-sm-6">
+                                    <input name="name"  ensure-unique="{{user.name}}" type="text" ng-model="user.name" required ng-minlength="4" ng-maxlength="16" class="form-control" id="inputEmail3" placeholder="用户名">
+                                </div>
+                                <div class="col-sm-4">
+                                    <span  ng-show="registForm.name.$error.required || registForm.name.$error.minlength || registForm.name.$error.maxlength">请输入4-16位的用户名</span>
+                                    <span  ng-show="registForm.name.$error.unique">用户名已经存在</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': registForm.password.$invalid && user.password}">
+                                <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                                <div class="col-sm-6">
+                                    <input name="password"  type="password" ng-model="user.password" required class="form-control" id="inputPassword3" placeholder="密码">
+                                </div>
+                                <div class="col-sm-4">
+                                    <span ng-show="registForm.password.$invalid">请输入密码</span>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': registForm.password1.$invalid && user.password1}">
+                                <label for="inputPassword4" class="col-sm-2 control-label">确认密码</label>
+                                <div class="col-sm-6">
+                                    <input name="password1" type="password" value-equal user="user" ng-model="user.password1" required class="form-control" id="inputPassword4" placeholder="重复密码">
+                                </div>
+                                <div class="col-sm-4">
+                                    <span ng-show="registForm.password1.$error.notEqual">密码重复错误</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button ng-disabled="registForm.$invalid" ng-click="registUser()" type="submit" class="btn btn-default">注册</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-sm-4">
-                        <span  ng-show="registForm.name.$error.required || registForm.name.$error.minlength || registForm.name.$error.maxlength">请输入4-16位的用户名</span>
-                        <span  ng-show="registForm.name.$error.unique">用户名已经存在</span>
+                    <div ng-show="isSecondStep" class="regist-uploadImage">
+                        <div class="alert alert-success" role="alert">注册成功，请上传个人图像，开始奇妙之旅吧</div>
+                        <div style="text-align: center">
+                        <span class="btn btn-success btn-file">
+                            上传个人图像<input type="file" accept="image/*" ng-file-select="onFileSelect($files)">
+                        </span>
+                        </div>
+                        <div ng-show="uploadError" class="alert alert-danger" role="alert">图片上传失败，图片大小不要超过100k</div>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{'has-error': registForm.password.$invalid && user.password}">
-                    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
-                    <div class="col-sm-6">
-                        <input name="password"  type="password" ng-model="user.password" required class="form-control" id="inputPassword3" placeholder="密码">
-                    </div>
-                    <div class="col-sm-4">
-                        <span ng-show="registForm.password.$invalid">请输入密码</span>
-                    </div>
-                </div>
-                <div class="form-group" ng-class="{'has-error': registForm.password1.$invalid && user.password1}">
-                    <label for="inputPassword4" class="col-sm-2 control-label">确认密码</label>
-                    <div class="col-sm-6">
-                        <input name="password1" type="password" value-equal user="user" ng-model="user.password1" required class="form-control" id="inputPassword4" placeholder="重复密码">
-                    </div>
-                    <div class="col-sm-4">
-                        <span ng-show="registForm.password1.$error.notEqual">密码重复错误</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button ng-disabled="registForm.$invalid" ng-click="registUser()" type="submit" class="btn btn-default">注册</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div ng-show="isSecondStep" class="regist-uploadImage">
-            <div class="alert alert-success" role="alert">注册成功，请上传个人图像，开始奇妙之旅吧</div>
-            <div style="text-align: center">
-                <span class="btn btn-success btn-file">
-                    上传个人图像<input type="file" accept="image/*" ng-file-select="onFileSelect($files)">
-                </span>
             </div>
-            <div ng-show="uploadError" class="alert alert-danger" role="alert">图片上传失败，图片大小不要超过100k</div>
+
+            <!--<h3 class="panelHeaderTitle">用户注册</h3>-->
+
         </div>
+
+
+
     </div>
 </div>

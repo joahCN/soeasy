@@ -36,19 +36,7 @@ define(['appModule','service/indexService','service/constantService'], function(
                 }
             };
 
-            $scope.loadMoreItems = function(){
-//                if(!categoryObj.category) {
-//                    categoryObj.page ++;
-//                } else {
-//                    $scope.categories.some(function(cg){
-//                        if(cg.id == categoryObj.category){
-//                            cg.page = cg.page || 1;
-//                            categoryObj.page = cg.page;
-//                            cg.page ++;
-//                            return true;
-//                        }
-//                    });
-//                }
+            $scope.onScroll = function(){
                 categoryObj.start = 0;
                 if(categoryObj.category){
                     $scope.items.forEach(function(item){
@@ -62,6 +50,8 @@ define(['appModule','service/indexService','service/constantService'], function(
 
                 queryCategoryData();
             };
+
+            $scope.$emit("scroll");
 
             $scope.isLoadMore = function(){
                 return categoryObj.isEnd;

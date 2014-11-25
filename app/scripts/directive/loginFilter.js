@@ -11,7 +11,10 @@ define(['appModule'], function(module){
                    if(!usrId) {
                        event.preventDefault();
                        event.stopPropagation();
+                       var redirectUrl = $location.path();
+                       console.log("redirect url: " + redirectUrl);
                        scope.$apply(function(){
+                           $location.search("redirectUrl", encodeURIComponent(redirectUrl));
                            $location.path("/login");
                        });
                    }

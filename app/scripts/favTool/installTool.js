@@ -1,5 +1,5 @@
 (function(){
-    var isJQInstall, isSOSInstall, isHtmlReady;
+    var isJQInstall, isSOSInstall, isHtmlReady, isToolInstalled;
     var isDebugger = true;
     var sosUrl,jqsUrl,cssUrl;
     var domain = "http://wx.xcjx.org";
@@ -13,7 +13,10 @@
         cssUrl = domain + "/scripts/favTool/dist/favTool.min.css";
     }
 
-    loadData();
+    var currentDomain = window.location.href;
+    if(currentDomain.indexOf(domain) == -1){
+        loadData();
+    }
 
     function loadData(){
         var head = document.getElementsByTagName('head').item(0);
@@ -73,7 +76,10 @@
         }
 
         function initTool(){
-            new SoeasyModule(jQuery).loadData();
+            if ( !isToolInstalled ) {
+                new SoeasyModule(jQuery).loadData();
+                isToolInstalled = true;
+            }
         }
 
 //        function loadHtmlData(jq){

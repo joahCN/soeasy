@@ -8,9 +8,8 @@ require.config({
         'jquery' : '/bower_components/jquery/jquery.min',
         'appModule' : 'module/mainModule',
         'bootstrap' : '/bower_components/bootstrap/dist/js/bootstrap',
-        'jquery.gallery': '/bower_components/jquery-plugins/jquery.gallery/js/jquery.gallery',
         'modernizr.custom':'/bower_components/jquery-plugins/jquery.gallery/js/modernizr.custom',
-        'jquery.cookie' : '/bower_components/jquery-cookie/jquery.cookie',
+        'jquery.cookie' : '/bower_components/jquery.cookie/jquery.cookie',
         'angular.fileUpload': '/bower_components/ng-file-upload/angular-file-upload.min',
         'flat-ui': 'flat-ui'
     },
@@ -21,7 +20,6 @@ require.config({
         'angular-route': { deps: ['angular']},
         'angular-resource': {deps: ['angular']},
         'angular-cookies': {deps: ['angular']},
-        'jquery.gallery': {deps: ['jquery','modernizr.custom']},
         'jquery.cookie' : {deps: ['jquery']},
         'angular.fileUpload': {deps: ['angular']},
         'flat-ui': {deps: ['jquery']}

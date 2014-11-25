@@ -54,7 +54,7 @@ define(['require'], function(require){
                             }
                         }
                     );
-                    resource.get(params, responseCallback);
+                    resource.get(params, responseCallback, onError);
 //                    if(data){
 //                        resource.save(params,data,responseCallback);
 //                    } else {
@@ -68,6 +68,10 @@ define(['require'], function(require){
                             $rootScope.isRequestInProgress = false;
                         }
                         callback(result);
+                    }
+
+                    function onError(){
+                        Console.log("request error");
                     }
 
                 },

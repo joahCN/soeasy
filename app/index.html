@@ -16,7 +16,7 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="bower_components/jquery-plugins/jquery.gallery/css/style.css">
+    <!--<link rel="stylesheet" href="bower_components/jquery-plugins/jquery.gallery/css/style.css">-->
     <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1411566211_1271188.css">
     <link rel="stylesheet" href="styles/flat-sub.css">
@@ -24,11 +24,16 @@
       <script src="bower_components/jquery/jquery.min.js"></script>
       <script src="bower_components/ng-file-upload/angular-file-upload-shim.min.js"></script>
   </head>
-  <body ng-controller="mainController">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
 
+  <body ng-controller="mainController">
+  <div id="browsehappy" style="display: none">
+      <div class="container-fluid" style="text-align: center;margin-top: 50px;font-size: 24px">
+          <p>您的浏览器已经过时啦，请<a href="http://browsehappy.com/">升级浏览器</a> 后再体验收藏神器的最新成果吧.</p>
+      </div>
+
+  </div>
+
+  <div id="bodyContent">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -56,14 +61,12 @@
                             <li><a href="#" ng-click="logout()">退出</a></li>
                         </ul>
                     </li>
-                    <!--<li><a href="#userProfile/{{loginUser.id}}" ng-show="loginUser">{{loginUser.name}}</a></li>-->
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
         </div>
     </nav>
 
-    <!-- Add your site or application content here -->
-    <div class="container-fluid" style="margin-top: 60px;max-width: 1263px;min-height: 800px;">
+    <div class="container-fluid" style="margin-top: 60px;max-width: 1263px;min-height: 800px;" ng-class="{fullContainer: isFullContainer}">
 
         <div ng-view></div>
     </div>
@@ -86,6 +89,7 @@
             <span class="glyphicon glyphicon-refresh"></span>
         </div>
     </div>
+  </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 
@@ -102,6 +106,24 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
         <!-- endbuild -->
+  <script>
+      $(function(){
+          var ua = navigator.userAgent.toLowerCase();
+          var ie = ua.match(/msie ([\d.]+)/);
+          var ieVersion;
+          if(ie){
+              ieVersion = ie[1];
+              if(ieVersion < 10) {
+                  $("#bodyContent").hide();
+                  $("#browsehappy").show();
+              } else {
+                  $("#browsehappy").hide();
+              }
+          }
+//          $("#bodyContent").hide();
+//          $("#browsehappy").show();
+      });
+  </script>
 
 </body>
 </html>

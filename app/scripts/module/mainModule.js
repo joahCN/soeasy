@@ -47,6 +47,28 @@ define(['angular','angular-route', 'provider/routeResolver', 'angular-resource',
 //                $rootScope.requestCount = 0;
 //                $rootScope.isRequestInProgress = false;
 //            });
+            var scrollFn = function(){};
+            $rootScope.$on("scroll", function(event){
+                scrollFn = event.targetScope.onScroll;
+            });
+
+            $(window).scroll(function(){
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(this).height();
+                if(scrollTop + windowHeight == scrollHeight){
+                    $rootScope.$eval(scrollFn);
+                }
+            });
+
+            $rootScope.$on("$locationChangeSuccess", function(){
+                scrollFn = function(){};
+                $rootScope.isFullContainer = false;
+            });
+
+            $rootScope.isFullContainer = false;
+
+
         }])
         .controller('mainController', function(){
 
